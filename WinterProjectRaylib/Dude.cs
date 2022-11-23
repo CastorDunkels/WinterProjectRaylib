@@ -3,19 +3,13 @@ using System;
 public class Dude
 {
     //position
-    public Rectangle rect;
+    protected Rectangle rect;
 
     //sprite
-    public Texture2D sprite;
+    protected Texture2D sprite;
 
-    //movement
-    public float speed = 5f;
-
-
-
-    public Dude()
-    {
-    }
+    protected int spawnPositionX = 20;
+    protected int spawnPositionY = 700;
 
     public void Draw()
     {

@@ -1,4 +1,6 @@
 ﻿global using Raylib_cs;
+global
+using System.Numerics;
 const int screenHeight = 800;
 const int screenWidth = 1000;
 
@@ -8,8 +10,9 @@ Raylib.SetTargetFPS(60);
 
 
 Waltur waltur = new Waltur();
+Jesser jesse = new Jesser();
 
-while(!Raylib.WindowShouldClose())
+while (!Raylib.WindowShouldClose())
 {
     //logik
     waltur.Update();
@@ -18,8 +21,8 @@ while(!Raylib.WindowShouldClose())
     //grafik
     Raylib.BeginDrawing();
     Raylib.ClearBackground(Color.GRAY);
+    jesse.Draw();
     waltur.Draw();
-
 
 
 

@@ -1,15 +1,18 @@
 using System;
 
+
 public class Waltur : Dude
 {
     private Texture2D spriteFace, spriteLeft, spriteRight, spriteBack;
+    private float speed = 5f;
+
     public Waltur()
     {
         spriteLeft = Raylib.LoadTexture("WalterWhiteLeftSideView.png");
         spriteFace = Raylib.LoadTexture("WalterWhite.png");
         spriteRight = Raylib.LoadTexture("WalterWhiteRightSideView.png");
         spriteBack = Raylib.LoadTexture("WalterWhiteBackView.png");
-        rect = new Rectangle(100, 100, sprite.width, sprite.height);
+        rect = new Rectangle(spawnPositionX, spawnPositionY, sprite.width, sprite.height);
     }
 
     public void Update()
@@ -38,6 +41,7 @@ public class Waltur : Dude
         {
             sprite = spriteFace;
         }
+
 
 
     }
