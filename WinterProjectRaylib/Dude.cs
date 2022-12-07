@@ -12,7 +12,7 @@ public class Dude
 
     protected float gravity = 0;
 
-    protected float jump = -10;
+    protected float jump = -8;
 
 
 
