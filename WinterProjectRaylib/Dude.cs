@@ -2,14 +2,19 @@ using System;
 
 public class Dude
 {
-    //position
     protected Rectangle rect;
 
-    //sprite
     protected Texture2D sprite;
 
-    protected int spawnPositionX = 20;
-    protected int spawnPositionY = 700;
+    public const int ground = 700;
+
+    protected float acceleration = 0.3f;
+
+    protected float gravity = 0;
+
+    protected float jump = -10;
+
+
 
     public void Draw()
     {
