@@ -14,11 +14,20 @@ public class Dude
 
     protected float jump = -8;
 
+    protected static Jesser theJesser;
+    protected static Waltur theWalter;
+
+
 
 
     public void Draw()
     {
         Raylib.DrawTexture(sprite, (int)rect.x, (int)rect.y, Color.WHITE);
+    }
+
+    public bool CollidesWith(Rectangle otherRect)
+    {
+        return Raylib.CheckCollisionRecs(rect, otherRect);
     }
 
 
