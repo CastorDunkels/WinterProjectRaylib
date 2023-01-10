@@ -12,6 +12,8 @@ public class Waltur : Dude
 
     private bool OnGround;
 
+    bool action;
+
     public Waltur()
     {
         theWalter = this;
@@ -24,7 +26,6 @@ public class Waltur : Dude
         rect = new Rectangle(playerX, playerY, sprite.width, sprite.height);
 
     }
-    // Jesser jesse = new();
     public void Update()
     {
         if (Raylib.IsKeyDown(KeyboardKey.KEY_D))
@@ -72,17 +73,34 @@ public class Waltur : Dude
             OnGround = false;
         }
 
-        if (theJesser.CollidesWith(rect))
+        /*if (theJesser.CollidesWith(rect) && Raylib.IsKeyPressed(KeyboardKey.KEY_ENTER))
         {
             sprite = spriteGun;
-            Raylib.DrawText(theJesser.text, theJesser.placeX - 40, theJesser.placeY - 50, 20, Color.PINK);
+            theJesser.JesseTalk();
         }
         else
         {
 
+        }*/
+        if (Raylib.IsKeyPressed(KeyboardKey.KEY_ENTER))
+        {
+            action = true;
+            if (action)
+            {
+                theJesser.JesseTalk();
+            }
+        }
+        else{
+            action = false;
         }
 
 
+
+        if (theJesser.CollidesWith(rect) && action)
+        {
+            sprite = spriteGun;
+            Raylib.DrawText(theJesser.text, theJesser.placeX - 40, theJesser.placeY - 50, 20, Color.PINK);
+        }
     }
 
 
