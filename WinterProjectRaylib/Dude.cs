@@ -1,28 +1,50 @@
 using System;
+using System.Text;
 
 public class Dude
 {
-    protected Rectangle rect;
+    public Rectangle rect;
 
-    protected Texture2D sprite;
+    protected Texture2D sprite, spriteFace, spriteLeft, spriteRight, spriteBack, spriteGun;
 
     public const int ground = 700;
-
-    protected float acceleration = 0.3f;
 
     protected float gravity = 0;
 
     protected float jump = -8;
 
-    protected static Jesser theJesser;
-    protected static Waltur theWalter;
+    private string dialogueText;
+
+    private double stopTime;
 
 
 
-
-    public void Draw()
+    public void drawSprite()
     {
         Raylib.DrawTexture(sprite, (int)rect.x, (int)rect.y, Color.WHITE);
+    }
+    public void drawDialogue()
+    {
+        if (Raylib.GetTime() < stopTime)
+        {
+            Raylib.DrawText(dialogueText, (int)rect.x, (int)rect.y-20, 10, Color.WHITE);
+        }
+    }
+
+    protected void setDialogue(string dialogue)
+    {
+        Raylib.GetTime();
+        dialogueText = dialogue;
+        stopTime = Raylib.GetTime() + 5;
+
+    }
+    private void endDialogue(double stopTime)
+    {
+
+    }
+    public virtual void talk()
+    {
+
     }
 
     public bool CollidesWith(Rectangle otherRect)

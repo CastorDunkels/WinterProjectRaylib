@@ -3,20 +3,22 @@ using System;
 
 public class Waltur : Dude
 {
-    private Texture2D spriteFace, spriteLeft, spriteRight, spriteBack, spriteGun;
     private float speed = 5f;
 
     private float playerY = Dude.ground;
 
-    public float playerX = 20;
+    private float playerX = 20;
 
     private bool OnGround;
 
     bool action;
+    private Jesser theJesser;
 
-    public Waltur()
+    public World theWorld;
+
+    public Waltur(World world)
     {
-        theWalter = this;
+        theWorld = world;
         spriteLeft = Raylib.LoadTexture("WalterWhiteLeftSideView.png");
         spriteFace = Raylib.LoadTexture("WalterWhite.png");
         spriteRight = Raylib.LoadTexture("WalterWhiteRightSideView.png");
@@ -25,6 +27,10 @@ public class Waltur : Dude
         sprite = spriteFace;
         rect = new Rectangle(playerX, playerY, sprite.width, sprite.height);
 
+    }
+    public void setJesse(Jesser jesse)
+    {
+        theJesser = jesse;
     }
     public void Update()
     {
@@ -60,34 +66,25 @@ public class Waltur : Dude
             sprite = spriteFace;
         }
 
-        if (rect.y > 698)
+        if (rect.y > theWorld.getGround() - 2)
         {
-            rect.y = 700;
+            rect.y = theWorld.getGround();
             gravity = 0;
             OnGround = true;
         }
-        else if (rect.y <= 698)
+        else if (rect.y <= theWorld.getGround() - 2)
         {
             rect.y += gravity;
-            gravity += acceleration;
+            gravity += theWorld.getGravity();
             OnGround = false;
         }
 
-        /*if (theJesser.CollidesWith(rect) && Raylib.IsKeyPressed(KeyboardKey.KEY_ENTER))
-        {
-            sprite = spriteGun;
-            theJesser.JesseTalk();
-        }
-        else
-        {
-
-        }*/
         if (Raylib.IsKeyPressed(KeyboardKey.KEY_ENTER))
         {
             action = true;
             if (action)
             {
-                theJesser.JesseTalk();
+                theJesser.talk();
             }
         }
         else{
@@ -95,12 +92,6 @@ public class Waltur : Dude
         }
 
 
-
-        if (theJesser.CollidesWith(rect) && action)
-        {
-            sprite = spriteGun;
-            Raylib.DrawText(theJesser.text, theJesser.placeX - 40, theJesser.placeY - 50, 20, Color.PINK);
-        }
     }
 
 
