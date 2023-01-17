@@ -4,18 +4,15 @@ using System.Text;
 
 public class Jesser : Dude
 {
-    private int placeX = 200;
-    private int placeY = Dude.ground;
-    private string text;
-
     private int index;
-
 
     public Jesser()
     {
+        startX = 200;
+        startY = 700;
         sprite = Raylib.LoadTexture("JessePinkman.png");
         spriteGun = Raylib.LoadTexture("JesseGun.jpg");
-        rect = new Rectangle(placeX, placeY, sprite.width, sprite.height);
+        rect = new Rectangle(startX, startY, sprite.width, sprite.height);
         
     }
 

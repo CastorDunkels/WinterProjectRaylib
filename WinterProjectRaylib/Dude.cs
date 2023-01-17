@@ -7,7 +7,7 @@ public class Dude
 
     protected Texture2D sprite, spriteFace, spriteLeft, spriteRight, spriteBack, spriteGun;
 
-    public const int ground = 700;
+    protected int startX, startY;
 
     protected float gravity = 0;
 

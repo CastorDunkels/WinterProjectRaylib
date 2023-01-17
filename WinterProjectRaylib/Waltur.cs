@@ -5,10 +5,6 @@ public class Waltur : Dude
 {
     private float speed = 5f;
 
-    private float playerY = Dude.ground;
-
-    private float playerX = 20;
-
     private bool OnGround;
 
     bool action;
@@ -19,13 +15,15 @@ public class Waltur : Dude
     public Waltur(World world)
     {
         theWorld = world;
+        startX = 100;
+        startY = 700;
         spriteLeft = Raylib.LoadTexture("WalterWhiteLeftSideView.png");
         spriteFace = Raylib.LoadTexture("WalterWhite.png");
         spriteRight = Raylib.LoadTexture("WalterWhiteRightSideView.png");
         spriteBack = Raylib.LoadTexture("WalterWhiteBackView.png");
         spriteGun = Raylib.LoadTexture("WalterWhiteGun.png");
         sprite = spriteFace;
-        rect = new Rectangle(playerX, playerY, sprite.width, sprite.height);
+        rect = new Rectangle(startX, startY, sprite.width, sprite.height);
 
     }
     public void setJesse(Jesser jesse)
@@ -82,7 +80,7 @@ public class Waltur : Dude
         if (Raylib.IsKeyPressed(KeyboardKey.KEY_ENTER))
         {
             action = true;
-            if (action)
+            if (action && theJesser.CollidesWith(rect))
             {
                 theJesser.talk();
             }

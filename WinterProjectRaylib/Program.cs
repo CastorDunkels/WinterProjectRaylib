@@ -12,6 +12,7 @@ Raylib.SetTargetFPS(60);
 World world = new World();
 Waltur waltur = new Waltur(world);
 Jesser jesse = new Jesser();
+TheFly fly = new TheFly();
 waltur.setJesse(jesse);
 
 Camera2D cakera = new()
@@ -33,8 +34,9 @@ while (!Raylib.WindowShouldClose())
     Raylib.BeginDrawing();
     Raylib.ClearBackground(Color.BLACK);
     Raylib.BeginMode2D(cakera);
-    Raylib.DrawLine((int)waltur.rect.x - screenWidth, screenHeight + 1, (int)waltur.rect.x + screenWidth, screenHeight + 1, Color.SKYBLUE);
+    Raylib.DrawLine((int)waltur.rect.x - screenWidth, screenHeight + 1, (int)waltur.rect.x + screenWidth, screenHeight + 1, Color.RED);
     jesse.drawSprite();
+    fly.drawSprite();
     waltur.drawSprite();
     jesse.drawDialogue();
 
