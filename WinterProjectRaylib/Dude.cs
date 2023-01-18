@@ -17,6 +17,8 @@ public class Dude
 
     private double stopTime;
 
+    protected bool life;
+
 
 
     public void drawSprite()

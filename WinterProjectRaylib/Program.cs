@@ -14,6 +14,7 @@ Waltur waltur = new Waltur(world);
 Jesser jesse = new Jesser();
 TheFly fly = new TheFly();
 waltur.setJesse(jesse);
+waltur.setFly(fly);
 
 Camera2D cakera = new()
 {
@@ -35,6 +36,7 @@ while (!Raylib.WindowShouldClose())
     Raylib.ClearBackground(Color.BLACK);
     Raylib.BeginMode2D(cakera);
     Raylib.DrawLine((int)waltur.rect.x - screenWidth, screenHeight + 1, (int)waltur.rect.x + screenWidth, screenHeight + 1, Color.RED);
+    Raylib.DrawLine(1075, 0, 1075, 800, Color.RED);
     jesse.drawSprite();
     fly.drawSprite();
     waltur.drawSprite();

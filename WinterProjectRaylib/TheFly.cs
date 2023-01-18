@@ -10,5 +10,8 @@ public class TheFly : Dude
         rect = new Rectangle(startX, startY, sprite.width, sprite.height);
         
     }
-    
+    /*if (life = false)
+    {
+        startX = 10;
+    }*/
 }

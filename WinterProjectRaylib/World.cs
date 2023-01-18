@@ -10,4 +10,8 @@ public class World
     {
         return 700;
     }
+    public float getWall()
+    {
+        return 1000;
+    }
 }

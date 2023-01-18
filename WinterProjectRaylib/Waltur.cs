@@ -1,14 +1,20 @@
+using System.Diagnostics;
 using System;
 
 
 public class Waltur : Dude
 {
     private float speed = 5f;
+    
+    private int kill; 
 
     private bool OnGround;
 
-    bool action;
+    private bool action;
+
     private Jesser theJesser;
+
+    private TheFly theFly;
 
     public World theWorld;
 
@@ -26,9 +32,14 @@ public class Waltur : Dude
         rect = new Rectangle(startX, startY, sprite.width, sprite.height);
 
     }
+    public Random generator = new Random();
     public void setJesse(Jesser jesse)
     {
         theJesser = jesse;
+    }
+    public void setFly(TheFly fly)
+    {
+        theFly = fly;
     }
     public void Update()
     {
@@ -76,17 +87,39 @@ public class Waltur : Dude
             gravity += theWorld.getGravity();
             OnGround = false;
         }
+        if (rect.x >= theWorld.getWall())
+        {
+            rect.x = theWorld.getWall();
+        }
+        
 
         if (Raylib.IsKeyPressed(KeyboardKey.KEY_ENTER))
         {
             action = true;
-            if (action && theJesser.CollidesWith(rect))
-            {
-                theJesser.talk();
-            }
         }
         else{
             action = false;
+        }
+        
+        if (action && theJesser.CollidesWith(rect))
+        {
+            theJesser.talk();
+        }
+        if (theFly.CollidesWith(rect))
+        {
+            sprite = spriteGun;
+            if (action)
+            {
+                theFly.rect.x = generator.Next(0, 1000);
+                theFly.rect.y = generator.Next(600, 700);
+                kill = generator.Next(0,10000000);
+                if(kill == 69)
+                {
+                    life = false;
+                    Raylib.DrawText("You killed the fly. Congrats!", (int)rect.x, 650, 10, Color.GOLD);
+                }
+
+            }
         }
 
 
