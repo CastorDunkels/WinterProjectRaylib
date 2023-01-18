@@ -5,7 +5,7 @@ public class Dude
 {
     public Rectangle rect;
 
-    protected Texture2D sprite, spriteFace, spriteLeft, spriteRight, spriteBack, spriteGun;
+    protected Texture2D sprite, spriteFace, spriteLeft, spriteRight, spriteBack, spriteGun, spriteDead;
 
     protected int startX, startY;
 
@@ -29,7 +29,7 @@ public class Dude
     {
         if (Raylib.GetTime() < stopTime)
         {
-            Raylib.DrawText(dialogueText, (int)rect.x, (int)rect.y-20, 10, Color.WHITE);
+            Raylib.DrawText(dialogueText, (int)rect.x, (int)rect.y - 20, 10, Color.WHITE);
         }
     }
 

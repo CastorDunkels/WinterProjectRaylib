@@ -5,8 +5,8 @@ using System;
 public class Waltur : Dude
 {
     private float speed = 5f;
-    
-    private int kill; 
+
+    private int kill;
 
     private bool OnGround;
 
@@ -41,7 +41,7 @@ public class Waltur : Dude
     {
         theFly = fly;
     }
-    public void Update()
+    public void update()
     {
         if (Raylib.IsKeyDown(KeyboardKey.KEY_D))
         {
@@ -91,16 +91,17 @@ public class Waltur : Dude
         {
             rect.x = theWorld.getWall();
         }
-        
+
 
         if (Raylib.IsKeyPressed(KeyboardKey.KEY_ENTER))
         {
             action = true;
         }
-        else{
+        else
+        {
             action = false;
         }
-        
+
         if (action && theJesser.CollidesWith(rect))
         {
             theJesser.talk();
@@ -112,11 +113,10 @@ public class Waltur : Dude
             {
                 theFly.rect.x = generator.Next(0, 1000);
                 theFly.rect.y = generator.Next(600, 700);
-                kill = generator.Next(0,10000000);
-                if(kill == 69)
+                kill = generator.Next(0, 10);
+                if (kill == 1)
                 {
                     life = false;
-                    Raylib.DrawText("You killed the fly. Congrats!", (int)rect.x, 650, 10, Color.GOLD);
                 }
 
             }

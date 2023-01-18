@@ -28,7 +28,8 @@ while (!Raylib.WindowShouldClose())
     cakera.target = new Vector2(waltur.rect.x + 35, waltur.rect.y - 100);
 
 
-    waltur.Update();
+    waltur.update();
+    fly.update();
 
 
 
