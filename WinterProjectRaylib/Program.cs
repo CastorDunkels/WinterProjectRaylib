@@ -36,6 +36,7 @@ while (!Raylib.WindowShouldClose())
     fly.drawSprite();
     waltur.drawSprite();
     jesse.drawDialogue();
+    waltur.drawDialogue();
 
 
     Raylib.EndMode2D();

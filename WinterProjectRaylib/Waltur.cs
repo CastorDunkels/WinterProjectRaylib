@@ -6,8 +6,6 @@ public class Waltur : Dude
 {
     private float speed = 5f;
 
-    private int kill;
-
     private bool OnGround;
 
     private bool action;
@@ -32,7 +30,7 @@ public class Waltur : Dude
         rect = new Rectangle(startX, startY, sprite.width, sprite.height);
 
     }
-    public Random generator = new Random();
+    
     public void setJesse(Jesser jesse)
     {
         theJesser = jesse;
@@ -41,6 +39,14 @@ public class Waltur : Dude
     {
         theFly = fly;
     }
+    public override void talk()
+    {
+        Random rnd = new();
+        List<string> winDialogue = new List<string>() { "You did it!!!", "The fly has been eradicated.", "You finally did it!?" };
+        index = rnd.Next(winDialogue.Count);
+        setDialogue(winDialogue[index]);
+    }
+    
     public void update()
     {
         if (Raylib.IsKeyDown(KeyboardKey.KEY_D))
@@ -106,19 +112,19 @@ public class Waltur : Dude
         {
             theJesser.talk();
         }
-        if (theFly.CollidesWith(rect))
-        {
-            sprite = spriteGun;
-            if (action)
-            {
-                theFly.rect.x = generator.Next(0, 1000);
-                theFly.rect.y = generator.Next(600, 700);
-                kill = generator.Next(0, 10000000);
-                if (kill == 420)
-                {
-                    life = false;
-                }
+        if (!theFly.isDead()){
 
+            if (theFly.CollidesWith(rect))
+            {
+                sprite = spriteGun;
+                if (action)
+                {   
+                    theFly.swat();
+                    if (theFly.isDead())
+                    {
+                        talk();
+                    }
+                }
             }
         }
 

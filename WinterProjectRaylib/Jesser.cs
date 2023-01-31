@@ -4,7 +4,6 @@ using System.Text;
 
 public class Jesser : Dude
 {
-    private int index;
 
     public Jesser()
     {

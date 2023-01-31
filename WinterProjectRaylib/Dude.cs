@@ -9,6 +9,8 @@ public class Dude
 
     protected int startX, startY;
 
+    protected int index;
+
     protected float gravity = 0;
 
     protected float jump = -8;
@@ -17,15 +19,15 @@ public class Dude
 
     private double stopTime;
 
-    protected bool life;
+    protected bool life = true;
 
-
+    public Random generator = new Random();
 
     public void drawSprite()
     {
         Raylib.DrawTexture(sprite, (int)rect.x, (int)rect.y, Color.WHITE);
     }
-    public void drawDialogue()
+    public virtual void drawDialogue()
     {
         if (Raylib.GetTime() < stopTime)
         {
@@ -40,10 +42,7 @@ public class Dude
         stopTime = Raylib.GetTime() + 5;
 
     }
-    private void endDialogue(double stopTime)
-    {
 
-    }
     public virtual void talk()
     {
 
@@ -52,6 +51,22 @@ public class Dude
     public bool CollidesWith(Rectangle otherRect)
     {
         return Raylib.CheckCollisionRecs(rect, otherRect);
+    }
+
+    public void kill()
+    {
+        life = false;
+        
+    }
+    public bool isDead()
+    {
+        if(life == false)
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 
