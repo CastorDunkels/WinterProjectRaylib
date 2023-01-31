@@ -16,7 +16,7 @@ public class Waltur : Dude
 
     private TheFly theFly;
 
-    public World theWorld;
+    private World theWorld;
 
     public Waltur(World world)
     {
@@ -81,7 +81,7 @@ public class Waltur : Dude
             gravity = 0;
             OnGround = true;
         }
-        else if (rect.y <= theWorld.getGround() - 2)
+        else
         {
             rect.y += gravity;
             gravity += theWorld.getGravity();
@@ -113,8 +113,8 @@ public class Waltur : Dude
             {
                 theFly.rect.x = generator.Next(0, 1000);
                 theFly.rect.y = generator.Next(600, 700);
-                kill = generator.Next(0, 10);
-                if (kill == 1)
+                kill = generator.Next(0, 10000000);
+                if (kill == 420)
                 {
                     life = false;
                 }

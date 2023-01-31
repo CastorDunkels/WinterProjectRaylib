@@ -6,7 +6,7 @@ public class TheFly : Dude
     {
         startX = 700;
         startY = 700;
-        spriteFace = Raylib.LoadTexture("Fly.png");
+        sprite = Raylib.LoadTexture("Fly.png");
         rect = new Rectangle(startX, startY, sprite.width, sprite.height);
 
     }

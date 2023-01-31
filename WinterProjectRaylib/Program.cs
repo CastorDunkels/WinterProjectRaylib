@@ -1,6 +1,6 @@
 ﻿global using Raylib_cs;
-using System.Runtime.Intrinsics;
-using System.Numerics;
+global using System.Numerics;
+
 const int screenHeight = 800;
 const int screenWidth = 1000;
 
@@ -13,29 +13,23 @@ World world = new World();
 Waltur waltur = new Waltur(world);
 Jesser jesse = new Jesser();
 TheFly fly = new TheFly();
+Camera camera = new Camera(waltur);
 waltur.setJesse(jesse);
 waltur.setFly(fly);
 
-Camera2D cakera = new()
-{
-    target = new Vector2(),
-    offset = new Vector2(Raylib.GetScreenWidth() / 2, Raylib.GetScreenHeight() / 2),
-    zoom = 1.2f,
-};
-
 while (!Raylib.WindowShouldClose())
 {
-    cakera.target = new Vector2(waltur.rect.x + 35, waltur.rect.y - 100);
 
 
     waltur.update();
+    camera.update();
     fly.update();
 
 
 
     Raylib.BeginDrawing();
     Raylib.ClearBackground(Color.BLACK);
-    Raylib.BeginMode2D(cakera);
+    Raylib.BeginMode2D(camera.getCamera2D());
     Raylib.DrawLine((int)waltur.rect.x - screenWidth, screenHeight + 1, (int)waltur.rect.x + screenWidth, screenHeight + 1, Color.RED);
     Raylib.DrawLine(1075, 0, 1075, 800, Color.RED);
     jesse.drawSprite();
