@@ -15,7 +15,7 @@ public class Camera
             zoom = 1.2f,
         };
     }
-    public Camera2D getCamera2D()
+    public Camera2D GetCamera2D()
     {
         return camera2D;
     }

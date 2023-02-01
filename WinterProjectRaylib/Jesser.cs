@@ -15,12 +15,12 @@ public class Jesser : Dude
         
     }
 
-    public override void talk()
+    public override void Talk()
     {
         Random rnd = new();
         List<string> JesseInteracts = new List<string>() { "Mr. White, what's the problem?", "Mr. White, we have to cook", "Mr. White, why don't you just sit down", "Mr. White, what are you doing? " };
         index = rnd.Next(JesseInteracts.Count);
-        setDialogue(JesseInteracts[index]);
+        SetDialogue(JesseInteracts[index]);
     }
 
 }

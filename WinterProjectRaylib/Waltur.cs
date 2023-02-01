@@ -39,12 +39,12 @@ public class Waltur : Dude
     {
         theFly = fly;
     }
-    public override void talk()
+    public override void Talk()
     {
         Random rnd = new();
         List<string> winDialogue = new List<string>() { "You did it!!!", "The fly has been eradicated.", "You finally did it!?" };
         index = rnd.Next(winDialogue.Count);
-        setDialogue(winDialogue[index]);
+        SetDialogue(winDialogue[index]);
     }
     
     public void update()
@@ -81,21 +81,21 @@ public class Waltur : Dude
             sprite = spriteFace;
         }
 
-        if (rect.y > theWorld.getGround() - 2)
+        if (rect.y > theWorld.GetGround() - 2)
         {
-            rect.y = theWorld.getGround();
+            rect.y = theWorld.GetGround();
             gravity = 0;
             OnGround = true;
         }
         else
         {
             rect.y += gravity;
-            gravity += theWorld.getGravity();
+            gravity += theWorld.GetGravity();
             OnGround = false;
         }
-        if (rect.x >= theWorld.getWall())
+        if (rect.x >= theWorld.GetWall())
         {
-            rect.x = theWorld.getWall();
+            rect.x = theWorld.GetWall();
         }
 
 
@@ -110,25 +110,23 @@ public class Waltur : Dude
 
         if (action && theJesser.CollidesWith(rect))
         {
-            theJesser.talk();
+            theJesser.Talk();
         }
-        if (!theFly.isDead()){
+        if (!theFly.IsDead()){
 
             if (theFly.CollidesWith(rect))
             {
                 sprite = spriteGun;
                 if (action)
                 {   
-                    theFly.swat();
-                    if (theFly.isDead())
+                    theFly.Swat();
+                    if (theFly.IsDead())
                     {
-                        talk();
+                        Talk();
                     }
                 }
             }
         }
-
-
     }
 
 

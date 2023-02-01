@@ -12,20 +12,21 @@ public class TheFly : Dude
 
     }
 
-    public void swat()
+    public void Swat()
     {
         int killProbability = generator.Next(0, 100000000);
         if (killProbability == 7331)
         {
-            kill();
+            Kill();
             rect.x = 500;
             rect.y = 600;
         }
         else{   
-            dodge();
+            Dodge();
+            Console.WriteLine(killProbability);
         }
     }
-    public void dodge()
+    public void Dodge()
     {
         rect.x = generator.Next(0, 1000);
         rect.y = generator.Next(600, 700);

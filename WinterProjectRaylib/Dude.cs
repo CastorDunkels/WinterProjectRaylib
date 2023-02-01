@@ -23,11 +23,16 @@ public class Dude
 
     public Random generator = new Random();
 
-    public void drawSprite()
+
+
+
+
+
+    public void DrawSprite()
     {
         Raylib.DrawTexture(sprite, (int)rect.x, (int)rect.y, Color.WHITE);
     }
-    public virtual void drawDialogue()
+    public void DrawDialogue()
     {
         if (Raylib.GetTime() < stopTime)
         {
@@ -35,7 +40,7 @@ public class Dude
         }
     }
 
-    protected void setDialogue(string dialogue)
+    protected void SetDialogue(string dialogue)
     {
         Raylib.GetTime();
         dialogueText = dialogue;
@@ -43,7 +48,7 @@ public class Dude
 
     }
 
-    public virtual void talk()
+    public virtual void Talk()
     {
 
     }
@@ -53,12 +58,12 @@ public class Dude
         return Raylib.CheckCollisionRecs(rect, otherRect);
     }
 
-    public void kill()
+    public void Kill()
     {
         life = false;
         
     }
-    public bool isDead()
+    public bool IsDead()
     {
         if(life == false)
         {

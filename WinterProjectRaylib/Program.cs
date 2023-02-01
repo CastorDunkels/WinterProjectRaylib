@@ -1,8 +1,8 @@
 ﻿global using Raylib_cs;
 global using System.Numerics;
 
-const int screenHeight = 800;
-const int screenWidth = 1000;
+int screenHeight = Raylib.GetScreenHeight();
+int screenWidth = Raylib.GetScreenWidth();
 
 
 Raylib.InitWindow(screenWidth, screenHeight, "gam");
@@ -29,14 +29,13 @@ while (!Raylib.WindowShouldClose())
 
     Raylib.BeginDrawing();
     Raylib.ClearBackground(Color.BLACK);
-    Raylib.BeginMode2D(camera.getCamera2D());
-    Raylib.DrawLine((int)waltur.rect.x - screenWidth, screenHeight + 1, (int)waltur.rect.x + screenWidth, screenHeight + 1, Color.RED);
-    Raylib.DrawLine(1075, 0, 1075, 800, Color.RED);
-    jesse.drawSprite();
-    fly.drawSprite();
-    waltur.drawSprite();
-    jesse.drawDialogue();
-    waltur.drawDialogue();
+    Raylib.BeginMode2D(camera.GetCamera2D());
+    jesse.DrawSprite();
+    fly.DrawSprite();
+    waltur.DrawSprite();
+    jesse.DrawDialogue();
+    waltur.DrawDialogue();
+    world.DrawWorld();
 
 
     Raylib.EndMode2D();
